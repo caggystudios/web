@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login Admin — CaggyID Dev</title>
+<link rel="icon" href="/uploads/default-avatar.svg" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { ink:'#0b0a1a', panel:'#131226', violet:{400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed'}, indigo:{500:'#6366f1',600:'#4f46e5'} },
+    fontFamily: { display:['Space Grotesk','sans-serif'], body:['Inter','sans-serif'], mono:['JetBrains Mono','monospace'] },
+  }}};
+</script>
+</head>
+<body class="bg-ink text-slate-200 font-body min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+
+<div class="fixed inset-0 -z-10">
+  <div class="absolute -top-40 -left-40 w-[32rem] h-[32rem] bg-violet-600/20 rounded-full blur-[120px]"></div>
+  <div class="absolute bottom-0 -right-40 w-[32rem] h-[32rem] bg-indigo-600/20 rounded-full blur-[120px]"></div>
+</div>
+
+<div class="w-full max-w-sm">
+  <div class="text-center mb-8">
+    <a href="/" class="font-display font-bold text-2xl text-white"><span class="text-violet-400">&lt;</span>CaggyID<span class="text-violet-400">/&gt;</span></a>
+    <p class="text-slate-500 text-sm mt-2 font-mono">// admin panel access</p>
+  </div>
+
+  <form id="login-form" class="bg-panel border border-white/10 rounded-2xl p-8 space-y-5">
+    <div>
+      <label class="block text-xs font-mono text-slate-400 mb-2">username</label>
+      <input id="username" type="text" autocomplete="username" required
+        class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-violet-500 transition" />
+    </div>
+    <div>
+      <label class="block text-xs font-mono text-slate-400 mb-2">password</label>
+      <input id="password" type="password" autocomplete="current-password" required
+        class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-violet-500 transition" />
+    </div>
+    <p id="error-msg" class="hidden text-sm text-red-400 font-mono"></p>
+    <button type="submit" id="submit-btn"
+      class="w-full py-2.5 rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-medium text-sm hover:opacity-90 transition shadow-lg shadow-violet-600/20">
+      Masuk
+    </button>
+  </form>
+  <p class="text-center text-xs text-slate-600 mt-6 font-mono">← <a href="/" class="hover:text-violet-400">kembali ke website</a></p>
+</div>
+
+<script>
+const form = document.getElementById('login-form');
+const errorMsg = document.getElementById('error-msg');
+const submitBtn = document.getElementById('submit-btn');
+
+// Jika sudah login, langsung ke dashboard
+fetch('/api/admin/check').then(r => r.json()).then(d => {
+  if (d.authenticated) window.location.href = '/admin/dashboard.html';
+});
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errorMsg.classList.add('hidden');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Memproses...';
+  try {
+    const res = await fetch('/api/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: document.getElementById('username').value.trim(),
+        password: document.getElementById('password').value,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Login gagal.');
+    window.location.href = '/admin/dashboard.html';
+  } catch (err) {
+    errorMsg.textContent = err.message;
+    errorMsg.classList.remove('hidden');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Masuk';
+  }
+});
+</script>
+</body>
+</html>

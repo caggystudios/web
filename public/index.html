@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CaggyID Dev</title>
+<meta name="description" content="CaggyID Dev — portfolio, blog, dan sertifikat Mohammad Luthfi Abdillah." />
+<link rel="icon" href="/uploads/default-avatar.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0b0a1a',
+          panel: '#131226',
+          panel2: '#1b1938',
+          violet: { 400:'#a78bfa', 500:'#8b5cf6', 600:'#7c3aed' },
+          indigo: { 400:'#818cf8', 500:'#6366f1', 600:'#4f46e5' },
+        },
+        fontFamily: {
+          display: ['Space Grotesk', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="bg-ink text-slate-200 font-body antialiased selection:bg-violet-500/30">
+
+<!-- ===== Ambient background ===== -->
+<div class="fixed inset-0 -z-10 overflow-hidden">
+  <div class="absolute -top-40 -left-40 w-[32rem] h-[32rem] bg-violet-600/20 rounded-full blur-[120px]"></div>
+  <div class="absolute top-1/3 -right-40 w-[32rem] h-[32rem] bg-indigo-600/20 rounded-full blur-[120px]"></div>
+  <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:48px_48px]"></div>
+</div>
+
+<!-- ===== Navbar ===== -->
+<header class="sticky top-0 z-50 backdrop-blur-md bg-ink/70 border-b border-white/5">
+  <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="font-display font-bold text-lg tracking-tight text-white flex items-center gap-2">
+      <span class="text-violet-400">&lt;</span>CaggyID<span class="text-violet-400">/&gt;</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-mono text-slate-400">
+      <a href="#about" class="hover:text-violet-300 transition">01.about</a>
+      <a href="#projects" class="hover:text-violet-300 transition">02.projects</a>
+      <a href="#blog" class="hover:text-violet-300 transition">03.blog</a>
+      <a href="#certificates" class="hover:text-violet-300 transition">04.certificates</a>
+      <a href="#contact" class="hover:text-violet-300 transition">05.contact</a>
+    </div>
+    <a href="/admin/login.html" class="text-xs font-mono px-3 py-1.5 rounded-full border border-violet-500/30 text-violet-300 hover:bg-violet-500/10 transition">admin →</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="max-w-6xl mx-auto px-6 pt-16 pb-24 md:pt-24 md:pb-32 grid md:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+    <div>
+      <p class="font-mono text-violet-400 text-sm mb-4">// selamat datang di portfolio saya</p>
+      <h1 id="dev-name" class="font-display font-bold text-4xl sm:text-5xl md:text-6xl text-white leading-[1.05] tracking-tight">
+        MOHAMMAD LUTHFI<br/>ABDILLAH
+      </h1>
+      <p id="dev-tagline" class="mt-6 text-lg text-slate-400 max-w-lg">Developer &amp; Digital Creator — membangun map game, server, dan website.</p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="#projects" class="px-6 py-3 rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-medium text-sm hover:opacity-90 transition shadow-lg shadow-violet-600/20">Lihat Proyek</a>
+        <a href="#blog" class="px-6 py-3 rounded-lg border border-white/10 text-slate-200 font-medium text-sm hover:border-violet-400/50 hover:text-violet-300 transition">Baca Blog</a>
+      </div>
+      <div class="mt-10 flex items-center gap-3 text-xs font-mono text-slate-500">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        available for collaboration
+      </div>
+    </div>
+    <div class="relative mx-auto">
+      <div class="absolute -inset-4 bg-gradient-to-br from-violet-600/40 to-indigo-600/40 rounded-3xl blur-2xl"></div>
+      <img id="dev-photo" src="/uploads/default-avatar.svg" alt="Foto Mohammad Luthfi Abdillah"
+           class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-3xl border border-white/10 shadow-2xl" />
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="max-w-6xl mx-auto px-6 py-20 border-t border-white/5">
+    <h2 class="font-mono text-violet-400 text-sm mb-2">01. about</h2>
+    <h3 class="font-display font-semibold text-2xl md:text-3xl text-white mb-6">Tentang Saya</h3>
+    <p id="dev-bio" class="text-slate-400 max-w-2xl leading-relaxed">
+      Halo! Saya Luthfi, seorang developer yang senang membangun berbagai hal digital: dari map game, server komunitas, sampai website untuk klien. Di sini saya membagikan proyek, tulisan, dan sertifikat yang sudah saya kumpulkan.
+    </p>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="max-w-6xl mx-auto px-6 py-20 border-t border-white/5">
+    <h2 class="font-mono text-violet-400 text-sm mb-2">02. projects</h2>
+    <h3 class="font-display font-semibold text-2xl md:text-3xl text-white mb-10">Proyek yang Sudah Selesai</h3>
+    <div id="projects-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- diisi via JS -->
+    </div>
+  </section>
+
+  <!-- ===== BLOG ===== -->
+  <section id="blog" class="max-w-6xl mx-auto px-6 py-20 border-t border-white/5">
+    <h2 class="font-mono text-violet-400 text-sm mb-2">03. blog</h2>
+    <h3 class="font-display font-semibold text-2xl md:text-3xl text-white mb-10">Tulisan Terbaru</h3>
+    <div id="blog-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- diisi via JS -->
+    </div>
+    <p id="blog-empty" class="hidden text-slate-500 font-mono text-sm">// belum ada tulisan. nantikan update selanjutnya.</p>
+  </section>
+
+  <!-- ===== CERTIFICATES ===== -->
+  <section id="certificates" class="max-w-6xl mx-auto px-6 py-20 border-t border-white/5">
+    <h2 class="font-mono text-violet-400 text-sm mb-2">04. certificates</h2>
+    <h3 class="font-display font-semibold text-2xl md:text-3xl text-white mb-2">Sertifikat</h3>
+    <p class="text-slate-500 text-sm mb-10 font-mono">// tersimpan lokal di browser ini</p>
+    <div id="cert-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- diisi via JS dari localStorage -->
+    </div>
+    <p id="cert-empty" class="hidden text-slate-500 font-mono text-sm">// belum ada sertifikat yang ditambahkan lewat admin panel.</p>
+  </section>
+
+  <!-- ===== CONTACT / FOOTER ===== -->
+  <section id="contact" class="max-w-6xl mx-auto px-6 py-20 border-t border-white/5">
+    <h2 class="font-mono text-violet-400 text-sm mb-2">05. contact</h2>
+    <h3 class="font-display font-semibold text-2xl md:text-3xl text-white mb-6">Mari Terhubung</h3>
+    <div id="contact-links" class="flex flex-wrap gap-4 text-sm font-mono text-slate-400"></div>
+  </section>
+</main>
+
+<footer class="border-t border-white/5 py-8">
+  <p class="text-center text-xs text-slate-600 font-mono">© <span id="year"></span> CaggyID Dev — built with Node.js &amp; Tailwind CSS</p>
+</footer>
+
+<!-- ===== Modal: Blog reader ===== -->
+<div id="blog-modal" class="hidden fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm flex items-start md:items-center justify-center p-4 overflow-y-auto">
+  <div class="bg-panel border border-white/10 rounded-2xl max-w-2xl w-full my-8 overflow-hidden">
+    <img id="modal-img" src="" alt="" class="w-full h-56 object-cover hidden" />
+    <div class="p-6 md:p-8">
+      <button id="modal-close" class="float-right text-slate-400 hover:text-white text-xl leading-none">&times;</button>
+      <h3 id="modal-title" class="font-display font-semibold text-2xl text-white mb-2 pr-8"></h3>
+      <p id="modal-date" class="text-xs font-mono text-slate-500 mb-6"></p>
+      <div id="modal-content" class="prose prose-invert prose-sm max-w-none text-slate-300 leading-relaxed whitespace-pre-wrap"></div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
