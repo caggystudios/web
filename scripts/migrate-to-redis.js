@@ -12,13 +12,17 @@ const fs = require('fs');
 const path = require('path');
 const { Redis } = require('@upstash/redis');
 
-if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
-  console.error('❌ UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN belum ada di environment.');
+const REDIS_URL = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+const REDIS_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+
+if (!REDIS_URL || !REDIS_TOKEN) {
+  console.error('❌ Kredensial Redis belum ada di environment.');
+  console.error('   Cek .env.local: harus ada UPSTASH_REDIS_REST_URL/TOKEN atau KV_REST_API_URL/TOKEN.');
   console.error('   Jalankan `vercel env pull .env.local` dulu, lalu load file itu sebelum run script ini.');
   process.exit(1);
 }
 
-const redis = Redis.fromEnv();
+const redis = new Redis({ url: REDIS_URL, token: REDIS_TOKEN });
 const DATA_DIR = path.join(__dirname, '..', 'data');
 
 function readJSON(file, fallback) {
