@@ -376,8 +376,8 @@ module.exports = async (req, res) => {
   try {
     securityHeaders(res, req);
 
-    const segments = Array.isArray(req.query.path) ? req.query.path : [];
-    const pathname = '/api/' + segments.join('/');
+    const rawUrl = req.url || '/';
+    const pathname = rawUrl.split('?')[0];
 
     if (req.method !== 'GET' && req.method !== 'HEAD' && req.method !== 'POST' && req.method !== 'PUT' && req.method !== 'DELETE') {
       return sendJSON(res, 405, { error: 'Method Not Allowed' });
